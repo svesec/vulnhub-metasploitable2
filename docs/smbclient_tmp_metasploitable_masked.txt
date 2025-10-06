@@ -1,0 +1,9 @@
+Anonymous login successful
+  .                                   D        0  Mon Oct  6 12:38:05 2025
+  ..                                 DR        0  Sun May 20 21:36:12 2012
+  .ICE-unix                          DH        0  Mon Oct  6 11:24:57 2025
+  .X11-unix                          DH        0  Mon Oct  6 11:25:27 2025
+  5043.jsvc_up                        R        0  Mon Oct  6 11:26:14 2025
+  .X0-lock                           HR       11  Mon Oct  6 11:25:27 2025
+
+		7282168 blocks of size 1024. 5428296 blocks available
