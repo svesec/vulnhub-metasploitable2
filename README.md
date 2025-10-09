@@ -11,7 +11,6 @@
 - Cleanup  
 - Key Takeaways  
 - Artifacts (masked)  
-- Figures (inline)  
 - Status
 
 ## General Info
@@ -50,6 +49,20 @@ SMB discovery shows available shares and guest-mapping behavior. `tmp` is highli
 ![Figure 4 — tmp share listing (masked)](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/05_smb_tmp_ls.png)  
 *Figure 4 — example listing of `tmp` share (masked).*
 
+## Commands used (include as code block in report)
+    # basic discovery / enumeration (run in lab)
+    sudo nmap -sC -sV -p- <TARGET_IP>
+
+    # SMB discovery & listing (anonymous)
+    smbclient -L //<TARGET_IP> -N
+    smbmap -H <TARGET_IP>
+
+    # list tmp share contents (anonymous)
+    smbclient //<TARGET_IP>/tmp -N -c 'ls'
+
+    # full listing/allinfo (if needed, for local analysis only)
+    smbclient //<TARGET_IP>/tmp -N -c 'allinfo'
+
 ## Initial Shell
 No interactive shell is documented in this Part 1. Any shell proof will be covered in Part 2 if obtained under lab rules; public proofs will be minimal and redacted (example: `id`, small sanitized directory listings).
 
@@ -82,6 +95,3 @@ Files are in `docs/` (relative links):
 Ready to be saved as `docs/REPORT_PART1_Recon_and_SMB.md`. This document intentionally omits procedural masking commands; masking was completed offline and masked copies are in `docs/`. Once you confirm the presentation/layout is exactly as you want, I will commit the file with the commit message you choose.
 
 End of Part 1 — Recon & SMB evidence (partial)
-
-Commit message to use:
-docs: add REPORT_PART1_Recon_and_SMB.md (Part 1 - WIP)
