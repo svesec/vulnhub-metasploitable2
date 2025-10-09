@@ -31,13 +31,16 @@ Multiple services discovered: FTP (vsftpd 2.3.4), SSH, Telnet, HTTP/Apache, Tomc
 ![Figure 1 — Nmap summary](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/01_nmap_summary.png)  
 *Figure 1 — high-level Nmap service summary (masked).*
 
+![Figure 2 — Nmap services (masked)](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/02_nmap_services.png)  
+*Figure 2 — detailed Nmap services excerpt (masked). Shows RPC/NFS, Samba, Apache versions used for prioritization.*
+
 SMB discovery shows available shares and guest-mapping behavior. `tmp` is highlighted by smbmap output as READ/WRITE in this environment; this makes it the primary artifact collection target for Part 1.
 
-![Figure 2 — smbclient shares listing (masked)](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/03_smb_shares_terminal.png)  
-*Figure 2 — smbclient listing of shares (masked).*
+![Figure 3 — smbclient shares listing (masked)](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/03_smb_shares_terminal.png)  
+*Figure 3 — smbclient listing of shares (masked).*
 
-![Figure 3 — smbmap tmp permissions (masked)](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/04_smbmap_tmp.png)  
-*Figure 3 — smbmap output showing `tmp` with READ and WRITE (masked).*
+![Figure 4 — smbmap tmp permissions (masked)](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/04_smbmap_tmp.png)  
+*Figure 4 — smbmap output showing `tmp` with READ and WRITE (masked).*
 
 ## Exploitation
 **Plan (lab-only, non-destructive, reversible):**  
@@ -46,10 +49,10 @@ SMB discovery shows available shares and guest-mapping behavior. `tmp` is highli
 - **Priority 3:** Check NFS exports for readable/writable mounts to support local analysis for escalation vectors.  
 - **Priority 4:** Enumerate Tomcat/HTTP endpoints for manager pages or upload opportunities — secondary, only after SMB/NFS checks.
 
-![Figure 4 — tmp share listing (masked)](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/05_smb_tmp_ls.png)  
-*Figure 4 — example listing of `tmp` share (masked).*
+![Figure 5 — tmp share listing (masked)](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/05_smb_tmp_ls.png)  
+*Figure 5 — example listing of `tmp` share (masked).*
 
-## Commands used (include as code block in report)
+## Commands used (examples — include in report as fenced code block)
     # basic discovery / enumeration (run in lab)
     sudo nmap -sC -sV -p- <TARGET_IP>
 
