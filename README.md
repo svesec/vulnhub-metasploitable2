@@ -1,17 +1,18 @@
 # VulnHub – Metasploitable2 (Lab)
 
 ## Table of Contents
-- [General Info](#general-info)  
-- [Objectives](#objectives)  
-- [Enumeration](#enumeration)  
-- [Exploitation](#exploitation)  
-- [Initial Shell](#initial-shell)  
-- [Privilege Escalation](#privilege-escalation)  
-- [Post-Exploitation Proof](#post-exploitation-proof)  
-- [Cleanup](#cleanup)  
-- [Key Takeaways](#key-takeaways)  
-- [Artifacts (masked)](#artifacts-masked)  
-- [Status](#status)
+- General Info  
+- Objectives  
+- Enumeration  
+- Exploitation  
+- Initial Shell  
+- Privilege Escalation  
+- Post-Exploitation Proof  
+- Cleanup  
+- Key Takeaways  
+- Artifacts (masked)  
+- Figures (inline)  
+- Status
 
 ## General Info
 **Machine:** Metasploitable2 (lab)  
