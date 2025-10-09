@@ -1,8 +1,0 @@
-Anonymous login successful
-altname: 5TUBRO~V
-create_time:    Mon Oct  6 11:26:14 2025 EEST
-access_time:    Mon Oct  6 11:26:14 2025 EEST
-write_time:     Mon Oct  6 11:26:14 2025 EEST
-change_time:    Mon Oct  6 11:26:14 2025 EEST
-attributes: R (1)
-stream: [::$DATA], 0 bytes
