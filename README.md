@@ -95,6 +95,89 @@ Files are in `docs/` (relative links):
 - `smbclient_tmp_allinfo_5043_metasploitable_masked.txt`
 
 ## Status
-Ready to be saved as `docs/REPORT_PART1_Recon_and_SMB.md`. This document intentionally omits procedural masking commands; masking was completed offline and masked copies are in `docs/`. Once you confirm the presentation/layout is exactly as you want, I will commit the file with the commit message you choose.
+Part 1 complete — Reconnaissance and SMB evidence collected.
 
-End of Part 1 — Recon & SMB evidence (partial)
+## Part 2 — Exploitation, Initial Shell & Privilege Escalation
+
+### Exploitation — distccd Remote Command Execution
+
+Service enumeration confirmed an exposed distccd service on TCP/3632. The service was identified as distccd v1 ((GNU) 4.2.4), a known vulnerable version allowing unauthenticated remote command execution.
+
+The exploitation was performed using Metasploit’s official module to ensure protocol-correct interaction and full reproducibility.
+
+- Service: distccd v1
+- Port: 3632/tcp
+- Vulnerability: Unauthenticated Remote Command Execution
+- Exploit module: exploit/unix/misc/distcc_exec
+- Payload: cmd/unix/reverse
+
+Successful exploitation resulted in a reverse command shell as a low-privileged system user.
+
+Figure 6 — Initial shell via distccd (masked)  
+![Initial distccd shell](images/07_distcc_initial_shell.png)
+
+---
+
+### Initial Shell — Proof of Access
+
+The obtained shell was validated using minimal proof commands to confirm execution context and target identity. The shell runs under a low-privileged account, which is expected behavior for this service.
+
+Validated commands:
+- whoami
+- id
+- hostname
+
+Results confirm controlled command execution on the target system without destructive actions.
+
+---
+
+### Privilege Escalation — SUID Binary Abuse (nmap)
+
+Local enumeration of SUID binaries revealed several executables with elevated privileges. Among them, `/usr/bin/nmap` was identified as a high-confidence privilege escalation vector due to its legacy interactive mode and SUID configuration.
+
+Technique:
+- Vector: SUID binary abuse
+- Binary: /usr/bin/nmap
+- Method: GTFOBins — interactive mode
+
+The interactive mode of nmap allows execution of system commands that inherit the effective UID of the binary. Since nmap is SUID-root in this environment, invoking a shell from interactive mode yields root privileges.
+
+Figure 7 — Root shell via SUID nmap abuse (masked)  
+![Root via nmap SUID](images/08_nmap_suid_root.png)
+
+The resulting shell demonstrates effective UID 0 (root), confirming full privilege escalation.
+
+---
+
+### Additional Finding — SSH Key Material via NFS (Non-exploitable)
+
+During offline analysis of exposed NFS data, SSH key material was identified under the msfadmin home directory. While the presence of private keys represents a security misconfiguration, SSH key-based authentication was not exploitable in the current server configuration.
+
+This finding is documented as an informational issue rather than an exploitation path.
+
+Figure 8 — Exposed SSH key material via NFS (masked)  
+![SSH key listing](images/06_foothold_ssh_key_listing.png)
+
+---
+
+### Post-Exploitation Proof
+
+Post-exploitation actions were limited strictly to identity validation commands to confirm privilege level and system ownership. No persistence mechanisms, data exfiltration, or configuration changes were performed.
+
+Validated as root:
+- whoami → root
+- id → euid=0(root)
+- hostname → metasploitable
+
+---
+
+### Cleanup
+
+No files were modified on the target system. No persistence or scheduled tasks were created. All testing was conducted in-memory or via ephemeral shells. The lab environment can be safely reset without residual impact.
+
+---
+
+### Status
+- Initial access achieved via distccd RCE
+- Privilege escalation achieved via SUID nmap
+- Proof artifacts collected and masked
