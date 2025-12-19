@@ -157,6 +157,7 @@ This finding is documented as an informational issue rather than an exploitation
 
 Figure 8 — Exposed SSH key material via NFS (masked)   
 ![SSH key listing](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/06_foothold_ssh_key_listing.png)
+
 ---
 
 ### Post-Exploitation Proof
