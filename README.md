@@ -18,7 +18,7 @@
 **Platform:** VulnHub / local VM image  
 **Author:** SveSec  
 **Scope:** non-destructive lab testing — only masked artifacts and screenshots are published  
-**Status:** PARTIAL — Work in progress (Part 1: Recon & SMB evidence). Not a final report.
+**Status:** COMPLETE — Full exploitation and privilege escalation documented.
 
 ## Objectives
 - Produce reproducible, masked reconnaissance outputs for review.  
@@ -149,7 +149,7 @@ The resulting shell demonstrates effective UID 0 (root), confirming full privile
 
 ---
 
-### Additional Finding — SSH Key Material via NFS (Non-exploitable)
+Additional Finding — SSH Key Material via NFS (Non-exploitable)
 
 During offline analysis of exposed NFS data, SSH key material was identified under the msfadmin home directory. While the presence of private keys represents a security misconfiguration, SSH key-based authentication was not exploitable in the current server configuration.
 
