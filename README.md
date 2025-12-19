@@ -114,7 +114,7 @@ The exploitation was performed using Metasploit’s official module to ensure pr
 Successful exploitation resulted in a reverse command shell as a low-privileged system user.
 
 Figure 6 — Initial shell via distccd (masked)  
-![Initial distccd shell](images/07_distcc_initial_shell.png)
+![Initial distccd shell](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/07_distcc_initial_shell.png)
 
 ---
 
@@ -143,7 +143,7 @@ Technique:
 The interactive mode of nmap allows execution of system commands that inherit the effective UID of the binary. Since nmap is SUID-root in this environment, invoking a shell from interactive mode yields root privileges.
 
 Figure 7 — Root shell via SUID nmap abuse (masked)  
-![Root via nmap SUID](images/08_nmap_suid_root.png)
+![Root via nmap SUID](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/08_nmap_suid_root.png)
 
 The resulting shell demonstrates effective UID 0 (root), confirming full privilege escalation.
 
@@ -156,8 +156,7 @@ During offline analysis of exposed NFS data, SSH key material was identified und
 This finding is documented as an informational issue rather than an exploitation path.
 
 Figure 8 — Exposed SSH key material via NFS (masked)  
-![SSH key listing](images/06_foothold_ssh_key_listing.png)
-
+![SSH key listing](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/06_foothold_ssh_key_listing.png)
 ---
 
 ### Post-Exploitation Proof
