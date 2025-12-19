@@ -155,7 +155,7 @@ During offline analysis of exposed NFS data, SSH key material was identified und
 
 This finding is documented as an informational issue rather than an exploitation path.
 
-Figure 8 — Exposed SSH key material via NFS (masked)  
+Figure 8 — Exposed SSH key material via NFS (masked)   
 ![SSH key listing](https://raw.githubusercontent.com/svesec/vulnhub-metasploitable2/main/assets/screenshots/06_foothold_ssh_key_listing.png)
 ---
 
